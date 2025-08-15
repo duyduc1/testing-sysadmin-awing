@@ -1,0 +1,11 @@
+nginx_package: nginx
+nginx_service: nginx
+firewalld_service: firewalld
+nginx_web_root: /var/www/html/index.html
+log_dir: /var/log/nginx
+log_rotation_days: 7
+
+server_info:
+  ip: "{{ ansible_default_ipv4.address }}"
+  hostname: "{{ ansible_hostname }}"
+  deploy_time: "{{ ansible_date_time.date }} {{ ansible_date_time.time }}"

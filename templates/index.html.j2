@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nginx Server Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+        }
+        .container {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+        .info-box {
+            background: rgba(255,255,255,0.2);
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        h1 { color: #fff; text-align: center; }
+        .highlight { color: #ffeb3b; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Nginx Server Successfully Deployed!</h1>
+        
+        <div class="info-box">
+            <h3>📍 Server Information:</h3>
+            <p><strong>Server IP:</strong> <span class="highlight">{{ server_info.ip }}</span></p>
+            <p><strong>Hostname:</strong> <span class="highlight">{{ server_info.hostname }}</span></p>
+            <p><strong>Deploy Time:</strong> <span class="highlight">{{ server_info.deploy_time }}</span></p>
+        </div>
+
+        <div class="info-box">
+            <h3>⚙️ System Details:</h3>
+            <p><strong>OS:</strong> {{ ansible_distribution }} {{ ansible_distribution_version }}</p>
+            <p><strong>Architecture:</strong> {{ ansible_architecture }}</p>
+            <p><strong>Kernel:</strong> {{ ansible_kernel }}</p>
+            <p><strong>CPU Cores:</strong> {{ ansible_processor_cores }}</p>
+            <p><strong>Memory:</strong> {{ (ansible_memtotal_mb / 1024) | round(2) }} GB</p>
+        </div>
+
+        <div class="info-box">
+            <h3>🌐 Nginx Status:</h3>
+            <p><strong>Web Server:</strong> Nginx</p>
+            <p><strong>Status:</strong> <span class="highlight">Running</span></p>
+            <p><strong>Port:</strong> 80 (HTTP)</p>
+        </div>
+
+        <div class="info-box">
+            <h3>🔧 Deployed by:</h3>
+            <p><strong>Automation Tool:</strong> Ansible</p>
+            <p><strong>Playbook:</strong> nginx-setup.yml</p>
+            <p><strong>Last Updated:</strong> {{ ansible_date_time.iso8601 }}</p>
+        </div>
+    </div>
+</body>
+</html>
