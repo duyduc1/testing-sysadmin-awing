@@ -28,3 +28,17 @@ curl http://{{ ansible_host }}
 cat /etc/logrotate.d/nginx-custom
 cat /var/log/ansible-deployment.log
 ```
+
+## 📂 Cấu trúc thư mục dự án
+
+```bash
+project-request-2/
+├── templates/            
+│   ├── index.html.j2       
+│   └── nginx-lograte.j2           
+│
+├── inventory.ini          
+├── nginx-setup.yml       
+├── vars.yml             
+├── README.md          
+```
